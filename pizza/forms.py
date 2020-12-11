@@ -1,7 +1,7 @@
 from django import forms
+from pizza.models import Pizza
 
-class PizzaForm(forms.Form):
-    size_options = [('Small', 'Small'), ('Medium', 'Medium'), ('Large', 'Large')]
-    topping1 = forms.CharField(label='Topping1:', max_length=100)
-    topping2 = forms.CharField(label='Topping2:', max_length=100)
-    size = forms.ChoiceField(label='Size:', choices=size_options)
+class PizzaForm(forms.ModelForm):
+    class Meta:
+        model = Pizza
+        fields = ['topping1', 'topping2', 'size']
